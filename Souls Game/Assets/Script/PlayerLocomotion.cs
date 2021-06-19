@@ -87,7 +87,7 @@ namespace Souls
 
             float speed = movementSpeed;
 
-            if(inputHandler.sprintFlag)
+            if(inputHandler.sprintFlag && inputHandler.moveAmount > 0.5)
             {
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
@@ -95,8 +95,16 @@ namespace Souls
             }
             else
             {
-                speed = walkingSpeed;
-                moveDirection *= speed;
+                if(inputHandler.moveAmount < 0.5)
+                {
+                    moveDirection *= walkingSpeed;
+                    playerManager.isSprinting = false;
+                }
+                else
+                {
+                    moveDirection *= speed;
+                    playerManager.isSprinting = false;
+                }
             }
 
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
@@ -118,7 +126,7 @@ namespace Souls
             if(inputHandler.rollFlag)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
-                moveDirection = cameraObject.right * inputHandler.horizontal;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
 
                 if(inputHandler.moveAmount > 0)
                 {

@@ -12,7 +12,7 @@ namespace Souls
         Animator anim;
         
         [Header("Player Flags")]
-        public bool isInteracting, isSprinting;
+        public bool isInteracting, isSprinting, isInAir, isGrounded;
 
 
         private void Awake() 
@@ -34,6 +34,7 @@ namespace Souls
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
+            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
         }
 
         private void FixedUpdate() 
@@ -52,6 +53,11 @@ namespace Souls
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
             isSprinting = inputHandler.b_Input;
+
+            if(isInAir)
+            {
+                playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+            }
         }
 
 

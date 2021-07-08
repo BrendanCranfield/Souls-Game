@@ -21,13 +21,17 @@ namespace Souls
 
         [Header("Ground & Air Detection Stats")]
         [SerializeField]
-        float groundDetectionRayStartPoint = 0.5f, minimumDistanceNeededToBeginFall = 1f, groundDetectionRayDistance = 0.2f;
+        float groundDetectionRayStartPoint = 0.5f;
+        [SerializeField] 
+        float minimumDistanceNeededToBeginFall = 1f, groundDetectionRayDistance = 0.2f;
         LayerMask ignoreForGroundCheck;
         public float inAirTimer;
 
         [Header("Movement Stats")]
         [SerializeField]
-        float movementSpeed = 5, sprintSpeed = 7, walkingSpeed = 1, rotationSpeed = 10, fallingSpeed = 45;
+        float movementSpeed = 5;
+        [SerializeField] 
+        float sprintSpeed = 7, walkingSpeed = 1, rotationSpeed = 10, fallingSpeed = 45;
 
 
         void Start()

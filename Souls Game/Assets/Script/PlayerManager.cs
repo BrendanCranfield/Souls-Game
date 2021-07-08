@@ -12,7 +12,8 @@ namespace Souls
         Animator anim;
         
         [Header("Player Flags")]
-        public bool isInteracting, isSprinting, isInAir, isGrounded;
+        public bool isInteracting;
+        public bool isSprinting, isInAir, isGrounded;
 
 
         private void Awake() 
@@ -52,6 +53,8 @@ namespace Souls
         {
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
+            inputHandler.rb_Input = false;
+            inputHandler.rt_Input = false;
 
             if(isInAir)
             {

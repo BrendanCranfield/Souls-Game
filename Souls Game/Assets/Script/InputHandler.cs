@@ -7,11 +7,18 @@ namespace Souls
     public class InputHandler : MonoBehaviour
     {
         public float horizontal, vertical, moveAmount, mouseX, mouseY, rollInputTimer;
-        public bool b_Input, rollFlag, sprintFlag;
+        public bool b_Input, rollFlag, sprintFlag, rb_Input, rt_Input;
 
         PlayerControls inputActions;
+        PlayerAttacker playerAttacker;
+        PlayerInventory playerInventory;
 
         Vector2 movementInput, cameraInput;
+
+        private void Awake() {
+            playerAttacker = GetComponent<PlayerAttacker>();
+            playerInventory = GetComponent<PlayerInventory>();
+        }
 
         public void OnEnable() {
             if(inputActions == null)
@@ -33,7 +40,7 @@ namespace Souls
         {
             MoveInput(delta);
             HandleRollInput(delta);
-            //HandleAttackInput(delta);
+            HandleAttackInput(delta);
         }
 
         private void MoveInput(float delta)
@@ -65,5 +72,24 @@ namespace Souls
                 rollInputTimer = 0;
             }
         }
+
+        private void HandleAttackInput(float delta)
+        {
+            inputActions.PlayerActions.RT.performed += i => rb_Input = true;
+            inputActions.PlayerActions.RB.performed += i => rt_Input = true;
+
+            if(rt_Input)
+            {
+                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+            }
+
+            if(rb_Input)
+            {
+                playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+            }
+        }
+
+
+
     }
 }

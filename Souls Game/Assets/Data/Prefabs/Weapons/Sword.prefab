@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3119816176327148283}
   - component: {fileID: 3119816176323760441}
   - component: {fileID: 3119816176324845423}
-  - component: {fileID: 3147840652242697733}
+  - component: {fileID: 5915666320672919518}
   m_Layer: 0
   m_Name: SM_Wep_Broadsword_01
   m_TagString: Untagged
@@ -142,17 +142,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3147840652242697733
-MeshCollider:
+--- !u!136 &5915666320672919518
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3119816176326826125}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43873980847829622, guid: e79c25ba848da8945a25117a1a1ea059, type: 2}
+  m_Radius: 0.122020125
+  m_Height: 0.8914132
+  m_Direction: 1
+  m_Center: {x: -0.000000035067714, y: 0.32178894, z: 0.000000036699266}
